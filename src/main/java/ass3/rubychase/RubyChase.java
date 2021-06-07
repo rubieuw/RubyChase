@@ -1,5 +1,5 @@
 
-package ass3.mygame2;
+package ass3.rubychase;
 
 
 /**
@@ -8,7 +8,7 @@ package ass3.mygame2;
  */
 
 
-public class MyGame {
+public class RubyChase {
 
     /**
     *

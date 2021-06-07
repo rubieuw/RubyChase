@@ -1,4 +1,4 @@
-package ass3.mygame2;
+package ass3.rubychase;
 
 import java.util.Scanner;
 
@@ -20,8 +20,8 @@ import java.util.Scanner;
  */
 public class Parser 
 {
-    private CommandWords commands;  // holds all valid command words
-    private Scanner reader;         // source of command input
+    private final CommandWords commands;  // holds all valid command words
+    private final Scanner reader;         // source of command input
 
     /**
      * Create a parser to read from the terminal window.

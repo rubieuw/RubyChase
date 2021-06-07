@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ass3.mygame2;
+package ass3.rubychase;
 
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -69,9 +69,15 @@ public class Game {
      */
     private void printWelcome() {
         System.out.println();
-        System.out.println("some background here");
-        System.out.println("objective here");
-        System.out.println("include some necessary information (e.g. time limit)");
+        System.out.println("                 Welcome to 'The Ruby Chase'");
+        System.out.println("           **************************************");
+        System.out.println("    In this game, you have to find a ruby for the Queen!");
+        System.out.println("If the queen does not find her precious gem before midnight,");
+        System.out.println("        the cruel king will ban her from the kingdom.");
+        System.out.println("            Quick! you have only 30 minutes left!");
+        System.out.println("      --------------------------------------------------");
+        System.out.println("                  Type 'help' if you are lost!");
+        
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
     }
@@ -216,7 +222,7 @@ public class Game {
     private void useItem(Command command) // use key
     {
         if (!command.hasSecondWord()) {
-            // if there is no second word, we don't know where to go...
+        //if there is no second word, we don't know where to go...
             System.out.println("Take what?");
             return;
         }

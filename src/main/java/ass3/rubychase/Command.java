@@ -17,12 +17,12 @@
  * @version 2016.02.29
  */
 
-package ass3.mygame2;
+package ass3.rubychase;
 
 public class Command
 {
-    private String commandWord;
-    private String secondWord;
+    private final String commandWord;
+    private final String secondWord;
 
     /**
      * Create a command object. First and second word must be supplied, but

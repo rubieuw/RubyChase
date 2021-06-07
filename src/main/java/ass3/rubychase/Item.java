@@ -1,5 +1,5 @@
 
-package ass3.mygame2;
+package ass3.rubychase;
 /**
  * 
  *

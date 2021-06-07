@@ -8,7 +8,7 @@
  * @author  Michael Kölling and David J. Barnes
  * @version 2016.02.29
  */
-package ass3.mygame2;
+package ass3.rubychase;
 
 public class CommandWords
 {
