@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class ItemCreation
 {
     
-    private ArrayList<Item> allItemsInGame;
+    private final ArrayList<Item> allItemsInGame;
     
     public ItemCreation()
     {       
@@ -20,18 +20,20 @@ public class ItemCreation
         createItems();
     }
     
-    public void createItems(){
+    public final void createItems(){
         
-        Item item1, item2, excaliburSword, key, frontGateKey;
+        Item ruby, sword, key, lever, orgre;
         
-        
-        excaliburSword = new Item("excaliburSword", "The legendary Excalibur", 100);
-        key = new Item("key", "It has a shape of a heart", 100);
-        frontGateKey = new Item("frontGateKey", "To open the front gate door", 100);
-        
-        allItemsInGame.add(excaliburSword);
+        ruby = new Item("ruby", "The queen of all the gem stone", 999);
+        sword = new Item("sword", "The legendary Excalibur", 1000);
+        key = new Item("key", "It has the shape of a heart", 100);
+        lever = new Item("lever", "To open the front gate", 100);
+        orgre = new Item("orgre", "A giant orgre", 600);
+        allItemsInGame.add(ruby);
+        allItemsInGame.add(sword);
         allItemsInGame.add(key);
-        allItemsInGame.add(frontGateKey);
+        allItemsInGame.add(lever);
+        allItemsInGame.add(orgre);
     }
    
     public Item getItem(String stringItem){

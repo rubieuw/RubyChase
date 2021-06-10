@@ -154,6 +154,10 @@ public class Room
         return name;
     }
 
+   // boolean printAllRoomItems() {
+       
+    //}
+
     
 }
 

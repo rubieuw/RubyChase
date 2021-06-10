@@ -17,24 +17,30 @@ public class RoomCreation {
     
     private void createRooms() {
 
-        Room castle, kitchen, frontGate;
+        Room castle, museum, gate, forest;
 
         castle = new Room("castle", "You are at the castle", false);
-        kitchen = new Room("kitchen", "The kitchen door has a shape of a heart", false);
-        frontGate = new Room("frontGate", "There is a giant ogre", true);
-        
+        museum = new Room("museum", "You are at the museum. The museum door lock has the shape of a heart", true);
+        gate = new Room("gate", "There is a giant ogre forest", true);
+        forest = new Room("forest", "You are out in the wild. The ruby is somewhere here!", false);
 
-        castle.setExit("east", kitchen);
-        castle.setExit("south", frontGate);
-        frontGate.setExit("north", castle);
+        castle.setExit("east", museum);
+        castle.setExit("south", gate);
+        museum.setExit("west", castle);
+        gate.setExit("north", castle);
+        gate.setExit("south", forest);
+        forest.setExit("north", gate);
 
-        castle.addItemInRoom(itemCreation.getItem("excaliburSword"));
+        museum.addItemInRoom(itemCreation.getItem("sword"));
         castle.addItemInRoom(itemCreation.getItem("key"));
-        kitchen.addItemInRoom(itemCreation.getItem("frontGateKey"));
+        gate.addItemInRoom(itemCreation.getItem("lever"));
+        forest.addItemInRoom(itemCreation.getItem("ruby"));
+        forest.addItemInRoom(itemCreation.getItem("orgre"));
 
         allRoomInGame.add(castle);
-        allRoomInGame.add(frontGate);
-        allRoomInGame.add(kitchen);
+        allRoomInGame.add(gate);
+        allRoomInGame.add(museum);
+        allRoomInGame.add(forest);
 
     }
 
