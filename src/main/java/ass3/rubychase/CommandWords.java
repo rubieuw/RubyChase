@@ -1,20 +1,20 @@
 /**
- * This class is part of the "World of Zuul" application. 
- * "World of Zuul" is a very simple, text based adventure game.
+ * This class is part of the "Ruby Chase" game. 
+ * "Ruby Chase" is a very simple, text based adventure and thriller game.  .
  * 
- * This class holds an enumeration of all command words known to the game.
- * It is used to recognise commands as they are typed in.
- *
- * @author  Michael Kölling and David J. Barnes
- * @version 2016.02.29
+ * This class features to command words used in the game.
+ * 
+ * @author  Rubie Nunnoo
+ * @version 1.0
  */
 package ass3.rubychase;
 
 public class CommandWords
-{
+    {
     // a constant array that holds all valid command words
-    private static final String[] validCommands = {
-        "go", "quit", "help", "take", "drop", "use", "inventory", "inspect"
+    private static final String[] validCommands = 
+    {
+        "go", "quit", "help", "take", "drop", "use", "inventory", "pull" //"inspect"
     };
 
     /**

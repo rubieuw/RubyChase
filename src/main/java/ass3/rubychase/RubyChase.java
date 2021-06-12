@@ -3,8 +3,11 @@ package ass3.rubychase;
 
 
 /**
+ * This class is part of the "Ruby Chase" game. 
+ * "Ruby Chase" is a very simple, text based adventure and thriller game.
  *
- * @author @version
+ * @author Rubie Nunnoo
+ * @version 1.0
  */
 
 

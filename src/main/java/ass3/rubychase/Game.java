@@ -1,8 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ /**
+ * This class is part of the "Ruby Chase" game. 
+ * "Ruby Chase" is a very simple, text based adventure and thriller game.  
+ 
+ * "Ruby Chase" game is about a queen who lost a ruby (gemstone) 
+ * and a Knight (the player) who sets out to find the precious stone for her majesty.
+ * Otherwise, the queen will be banned from the kingdom for ever.
+ * 
+ * @author  Rubie Nunnoo
+ * @version 1.0
  */
+ 
 package ass3.rubychase;
 
 
@@ -18,27 +25,28 @@ import java.util.HashMap;
 public class Game 
 {
 
-    private Parser parser;
-    private Player player;
+    private final Parser parser;
+    private final Player player;
     private Room currentRoom;
-    private RoomCreation rooms;
+    private final RoomCreation rooms;
 
-    private HashMap<Item, Room> roomItem;
+    //private HashMap<Item, Room> roomItem;
+    //private HashMap<Item, Room> roomKey;
 
-    private HashMap<Item, Room> roomKey;
-
-    private int timeCounter; // to count the steps
-
+    ////private int timeCounter; // to count the steps
+    private long startTime;
     /**
      * Create the game and initialise its internal map.
      */
     public Game() 
     {
-        long timeStart = System.currentTimeMillis(); // use the real time
-        timeCounter = 50;
+        startTime = System.currentTimeMillis(); // use the real time
+        //timeCounter = 50;
+        
         parser = new Parser();
         player = new Player();
         rooms = new RoomCreation();
+        
         currentRoom = rooms.getRoom("castle");  // start game outside
         //System.out.println(createRoom.getcurrentRoom().getName());
     }
@@ -61,13 +69,31 @@ public class Game
         boolean finished = false;
         while (!finished) 
         {
-            long currentTime = System.currentTimeMillis();
+            ////long currentTime = System.currentTimeMillis();
             Command command = parser.getCommand();
-            // count the delta (currentTome - startTime)            
+            // count the delta (currentTime - startTime)            
             finished = processCommand(command);
+            finished = checkActualTime();
         }
-        System.out.println("Thank you for playing.  Good bye.");
+        System.out.println("                   ---------------------------------------");
+        System.out.println("                      Thank you for playing.  Good bye.");
     }
+    public boolean checkActualTime() 
+    {
+    boolean check = false;
+    long currentTime = System.currentTimeMillis();
+    
+    if ((currentTime - startTime)/1000/60 > 12)
+        
+    {
+        check = true;
+        
+        System.out.println("                              Time Over!");
+        System.out.println("                              Game Over!");
+    }
+         return check;
+    }
+                
 
     /**
      * Print out the opening message for the player.
@@ -75,14 +101,14 @@ public class Game
     private void printWelcome() 
     {
         System.out.println();
-        System.out.println("                 Welcome to 'The Ruby Chase'");
-        System.out.println("           **************************************");
-        System.out.println("    In this game, you have to find a ruby for the Queen!");
-        System.out.println("If the queen does not find her precious gem before midnight,");
-        System.out.println("        the cruel king will ban her from the kingdom.");
-        System.out.println("            Quick! you have only 30 minutes left!");
-        System.out.println("      --------------------------------------------------");
-        System.out.println("                  Type 'help' if you are lost!");
+        System.out.println("                                  Welcome to 'The Ruby Chase'");
+        System.out.println("                             **************************************");
+        System.out.println("                      In this game, you have to find a Ruby for the Queen!");
+        System.out.println("                  If the Queen does not find her precious gem before midnight,");
+        System.out.println("                        the cruel king will ban her from the kingdom.");
+        System.out.println("                             Quick! you have only 12 minutes left!");
+        System.out.println("                      --------------------------------------------------");
+        System.out.println("                                  Type 'help' if you are lost!");
         
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
@@ -123,6 +149,10 @@ public class Game
         else if (commandWord.equals("drop")) 
         {
             dropItem(command);
+        }   
+         else if (commandWord.equals("pull")) 
+        {
+            pullItem(command);
         } 
         else if (commandWord.equals("use")) 
         {
@@ -145,12 +175,12 @@ public class Game
      */
     private void printHelp() 
     {
-        System.out.println("");
+        //System.out.println("");
 
         // implement random Hints -> massive bonus points 
-        System.out.println("you can open the door using the 'use' command");
+        //System.out.println("you can open the door using the 'use' command");
 
-        System.out.println("you need to clear the ogre before you can open the museum door");
+        //System.out.println("you need to clear the ogre before you can open the museum door");
 
         System.out.println();
         System.out.println("Your command words are:");
@@ -183,10 +213,14 @@ public class Game
         {
             System.out.println("There is no door!");
         } else 
-        {
-            if (currentRoom.getLockedStatus() == true) { // the door is locked
+            
+            if ((currentRoom.getLockedStatus() == true) && (currentRoom.getName().equals("forest")))
+            { // the door is locked
+                System.out.println("You must clear the Ogre to continue your quest!");
+            }
+            else if (currentRoom.getLockedStatus() == true) { // the door is locked
                 System.out.println("The door is locked, you need to find a way to open it");
-                System.out.println(currentRoom.getLongDescription());
+                ////System.out.println(currentRoom.getLongDescription());
             } 
             else 
             {
@@ -196,7 +230,8 @@ public class Game
                 // increment the timeCounter
             }
         }
-    }
+    
+      
 
     private void takeItem(Command command) 
     {
@@ -211,9 +246,13 @@ public class Game
         Item currentItem = currentRoom.getRoomItem(itemFromCommand);
         //getPlayerItem(itemFromCommand);
 
-        if (currentItem == null) 
+        if ((currentItem == null) || currentItem.getName().equals ("lever"))
         {
             System.out.println("You can't take nothing! NO!");
+        }       
+        else if(currentItem.getName().equals ("ogre"))
+        {
+            System.out.println("Don't even try!");
         } 
         else 
         {
@@ -223,7 +262,7 @@ public class Game
 
             //roomItem.remove(currentItem);
             //addItemInventory(currentItem);
-         System.out.println(currentItem.getName() + " taken!");
+         System.out.println(currentItem.getDescription() + " was taken!");
         }
     }
 
@@ -243,7 +282,17 @@ public class Game
         {
             System.out.println("You can't drop nothing! NO!");
         } 
-        else 
+        
+        else if(currentRoom.getName().equals("castle") && currentItem.getName().equals("ruby"))
+        {
+            System.out.println("You gave the Queen her Ruby! You saved the Queen!");
+            
+            System.out.println("                                      YOU WIN!");
+            System.out.println("                                   CONGRATULATIONS!");
+            System.out.println("                             --------------------------");
+            System.out.println("                                Type 'quit' to leave!");
+        }
+        else
         {
             // Do the transaction here
             player.removeItemInventory(currentItem);
@@ -254,7 +303,36 @@ public class Game
         System.out.println(currentItem.getName() + " dropped!");
         }
     }
+    
+    private void pullItem(Command command) 
+    {
+        if (!command.hasSecondWord()) 
+        {
+            // if there is no second word, we don't know where to go...
+            System.out.println("Pull what?");
+            return;
+        }
+        String itemFromCommand = command.getSecondWord();
+        Item currentItem = currentRoom.getRoomItem(itemFromCommand);
+        //getPlayerItem(itemFromCommand);
 
+        if (currentItem == null) 
+        {
+            System.out.println("You can't pull nothing! NO!");
+        }
+         if(currentItem.getName().equals ("ogre"))
+        {
+            System.out.println("Don't even try!");
+        }
+        else if(currentRoom.getName().equals("gate") && currentItem.getName().equals("lever"))
+        {
+            currentRoom.setLockedStatus(false);
+            System.out.println(currentItem.getName() + " pulled!");
+            System.out.println("The gate is now open!");
+        }
+    }
+
+    
     private void useItem(Command command) // use key
     {
         if (!command.hasSecondWord()) 
@@ -279,18 +357,24 @@ public class Game
             {
             currentRoom.setLockedStatus(false);
             System.out.println(currentItem.getName() + " used!");
+            System.out.println("The Museum door is now unlocked");
             }
-            if(currentRoom.getName().equals("gate") && currentItem.getName().equals("lever"))
+            else if (currentRoom.getName().equals("forest") && currentItem.getName().equals("sword"))
             {
-            currentRoom.setLockedStatus(false);
+
+           currentRoom.setLockedStatus(false);
             System.out.println(currentItem.getName() + " used!");
+            System.out.println("You have bravely killed the giant Ogre!");
             }
-            //if(currentRoom.getName().equals("castle")){
+            else if(currentRoom.getName().equals("castle") && currentItem.getName().equals("key"))
+            {
+          
             //currentRoom.checkRoom("castle");
             //roomKey.get(currentItem).setLockedStatus(false);
           
-            //System.out.println("You cannot use this item here");
+            System.out.println("You cannot use this item here");
             }
+        }
         }
         
 

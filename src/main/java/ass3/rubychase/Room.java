@@ -5,7 +5,11 @@ import java.util.HashMap;
 import java.util.ArrayList;
 
 /**
- * Write at least 3 sentences!!!!!
+ *  This class is part of the "Ruby Chase" game. 
+ * "Ruby Chase" is a very simple, text based adventure and thriller game.  
+ * 
+ * The room class has information about the methods used for the rooms.  
+ * These include room lock status, room name, room description and other methods.
  * 
  * @author  Michael Kölling and David J. Barnes
  * @version 2016.02.29
@@ -62,13 +66,15 @@ public class Room
      */
     public String getLongDescription()
     {
-        return "You are " + description + ".\n" + getExitString() + ".\n" + getAllItems();
+        return "You are at the " + name + ".\n" + description + ".\n" + getExitString() + ".\n" + getAllItems();
     }
 
     public String getAllItems(){
 
-        return "You have some " + listOfItems();
-
+        return "Room " + listOfItems();
+        
+        
+        
     }
 
     private String listOfItems(){
@@ -78,6 +84,7 @@ public class Room
             returnString += " " + item.getName();           
         }
         return returnString;
+    
     }
 
     /**
@@ -154,9 +161,11 @@ public class Room
         return name;
     }
 
-   // boolean printAllRoomItems() {
+    ////boolean printAllRoomItems() {
        
-    //}
+    ////    return false;
+       
+    //// }
 
     
 }
