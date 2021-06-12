@@ -14,8 +14,7 @@ package ass3.rubychase;
 public class RubyChase {
 
     /**
-    *
-    * @param nothing
+    * @param args
     */
     public static void main(String[] args) {
         Game game = new Game();

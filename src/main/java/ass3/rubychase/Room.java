@@ -26,8 +26,7 @@ public class Room
 
     /**
      * Create a room described "description". Initially, it has
-     * no exits. "description" is something like "a kitchen" or
-     * "an open court yard".
+     * no exits.
      * @param description The room's description.
      */
     public Room(String name, String description, boolean isLocked) 
@@ -73,8 +72,6 @@ public class Room
 
         return "Room " + listOfItems();
         
-        
-        
     }
 
     private String listOfItems(){
@@ -89,7 +86,6 @@ public class Room
 
     /**
      * Return a string describing the room's exits, for example
-     * "Exits: north west".
      * @return Details of the room's exits.
      */
     private String getExitString()
@@ -119,27 +115,34 @@ public class Room
      * @param stringItem taken from the command which was converted into a String
      * @return Item class according to the input String
      */
-    public Item getRoomItem(String stringItem){
+    public Item getRoomItem(String stringItem)
+    {
         Item itemToReturn = null;
-        for(Item item: roomItem){
-            if(item.getName().contains(stringItem)){
+        for(Item item: roomItem)
+        {
+            if(item.getName().contains(stringItem))
+            {
                 itemToReturn = item;
             }
         }
         return itemToReturn;
     }
 
-    public void addItemInRoom(Item item){
+    public void addItemInRoom(Item item)
+    {
         roomItem.add(item);
     }
 
-    public void removeItemInRoom(Item item){
-        if(roomItem.size() > 0){
+    public void removeItemInRoom(Item item)
+    {
+        if(roomItem.size() > 0)
+        {
             roomItem.remove(item);
         }
     }
 
-    public void addHashMapItemInRoom(Room room, Item item){
+    public void addHashMapItemInRoom(Room room, Item item)
+    {
         roomHashMapItem.put(room, item);
     }
 
@@ -149,15 +152,18 @@ public class Room
      * @return The return value
      */
 
-    public boolean getLockedStatus(){
+    public boolean getLockedStatus()
+    {
         return isLocked;
     }
 
-    public void setLockedStatus(boolean newStatus){
+    public void setLockedStatus(boolean newStatus)
+    {
         isLocked = newStatus;
     }
     
-    public String getName(){
+    public String getName()
+    {
         return name;
     }
 
