@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * The Ogre's Den has a secret passage under the royal museum.
  * 
  * @author  Rubie Nunnoo
- * @version 1.0
+ * @version 2.0
  */
 
 public class RoomCreation {
@@ -31,11 +31,13 @@ public class RoomCreation {
         Room castle, museum, gate, forest, den;
 
         castle = new Room("castle", "The Queen's is here waiting for her Ruby!", false);
-        museum = new Room("museum", "The Museum door lock has the shape of a heart", true);
+        museum = new Room("museum", "The Museum door lock has the shape of a heart", false);
         gate = new Room("gate", "The Gate protects the Castle against the giant ogre from the outside Forest", true);
         forest = new Room("forest", "You are out in the wilderness. Beware of the lumbering grim creatures!", true);
         den = new Room("Den", "You are at the Ogre's Den", false);
         
+        
+        // creating the exits in the rooms
         castle.setExit("east", museum);
         castle.setExit("south", gate);
         museum.setExit("west", castle);
@@ -45,12 +47,16 @@ public class RoomCreation {
         forest.setExit("underground", den);
         den.setExit("upstairs", museum);
 
+        
+        // add the items in their respective rooms
         museum.addItemInRoom(itemCreation.getItem("sword"));
         castle.addItemInRoom(itemCreation.getItem("key"));
         gate.addItemInRoom(itemCreation.getItem("lever"));
         forest.addItemInRoom(itemCreation.getItem("ogre"));
         den.addItemInRoom(itemCreation.getItem("ruby"));
 
+        
+        // add the rooms in the game
         allRoomInGame.add(castle);
         allRoomInGame.add(gate);
         allRoomInGame.add(museum);

@@ -11,8 +11,8 @@ import java.util.ArrayList;
  * The room class has information about the methods used for the rooms.  
  * These include room lock status, room name, room description and other methods.
  * 
- * @author  Michael Kölling and David J. Barnes
- * @version 2016.02.29
+ * @author  Rubie Nunnoo
+ * @version 2.0
  */
 
 public class Room 
@@ -25,9 +25,10 @@ public class Room
     private HashMap<Room, Item> roomHashMapItem;
 
     /**
-     * Create a room described "description". Initially, it has
-     * no exits.
+     * Create a room described "description". Initially, it has no exits.
+     * @param name the name of the room.
      * @param description The room's description.
+     * @param isLocked the room lock status.
      */
     public Room(String name, String description, boolean isLocked) 
     {
@@ -49,8 +50,9 @@ public class Room
     }
 
     /**
-     * @return The short description of the room
-     * (the one that was defined in the constructor).
+     * Given a command, process the command.
+     * A short description only
+     * @return The short description of the room.
      */
     public String getShortDescription()
     {
@@ -58,9 +60,9 @@ public class Room
     }
 
     /**
-     * Return a description of the room in the form:
-     *     You are in the kitchen.
-     *     Exits: north west
+     * Given a command, process the command.
+     * A long description of the room in the form: 
+     * short description + exits + items present.
      * @return A long description of this room
      */
     public String getLongDescription()
@@ -68,15 +70,23 @@ public class Room
         return "You are at the " + name + ".\n" + description + ".\n" + getExitString() + ".\n" + getAllItems();
     }
 
+    /**
+     * Given a command, process the command.
+     * @return a list of all items
+     */
     public String getAllItems(){
 
-        return "Room " + listOfItems();
+        return listOfItems();
         
     }
 
+    /**
+     * Given a command, process the command.
+     * @return a list of all items present in the room
+     */
     private String listOfItems(){
 
-        String returnString = "items:";
+        String returnString = "items present:";
         for(Item item : roomItem){
             returnString += " " + item.getName();           
         }
@@ -85,7 +95,7 @@ public class Room
     }
 
     /**
-     * Return a string describing the room's exits, for example
+     * Return a string describing the room's exits
      * @return Details of the room's exits.
      */
     private String getExitString()
@@ -111,7 +121,6 @@ public class Room
 
     /**
      * Method getRoomItem
-     *
      * @param stringItem taken from the command which was converted into a String
      * @return Item class according to the input String
      */
@@ -128,11 +137,21 @@ public class Room
         return itemToReturn;
     }
 
+    /**
+     * Given a command, process the command.
+     * Add an item to a room.
+     * @param item item to add.
+     */
     public void addItemInRoom(Item item)
     {
         roomItem.add(item);
     }
 
+    /**
+     * Given a command, process the command.
+     * Remove an item from a room room if it exits in the room.
+     * @param item item to remove.
+     */
     public void removeItemInRoom(Item item)
     {
         if(roomItem.size() > 0)
@@ -140,7 +159,13 @@ public class Room
             roomItem.remove(item);
         }
     }
-
+    /**
+     * Given a command, process the command.
+     * Stores items in " key / value " pairs, to be accessed by other index like a string.
+     * Return a list of all items present in the room.
+     * @param room to access.
+     * @param item to access.
+     */
     public void addHashMapItemInRoom(Room room, Item item)
     {
         roomHashMapItem.put(room, item);
@@ -148,20 +173,26 @@ public class Room
 
     /**
      * Method getLockedStatus
-     *
      * @return The return value
      */
-
     public boolean getLockedStatus()
     {
         return isLocked;
     }
-
+   /**
+     * Method setLockedStatus.
+     * changes the lock status of the room from one state to another.
+     * @param newStatus lock or unlocked depending on the player action.
+     */
     public void setLockedStatus(boolean newStatus)
     {
         isLocked = newStatus;
     }
     
+    /**
+     * Given a command, process the command.
+     * @return the name of the current Room.
+     */
     public String getName()
     {
         return name;

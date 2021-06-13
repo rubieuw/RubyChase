@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * The inventory consist of item that the player takes as he travels in the game.
  * 
  * @author Rubie Nunnoo
- * @version 1.0
+ * @version 2.0
  */
 public class Player
 {

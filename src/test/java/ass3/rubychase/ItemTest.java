@@ -10,14 +10,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
- * @author Nigel Franciscus
+ * @author Rubie Nunnoo
  */
 public class ItemTest {
     
     Item item;
     
     public ItemTest() {
-        item = new Item("gun","this is a gun", 0);
+        item = new Item("knife","this is a knife", 100);
     }
 
     /**
@@ -26,23 +26,20 @@ public class ItemTest {
     @Test
     public void testGetName() {
         
-        //Item item = new Item("gun","this is a gun", 0);
-        String expected = "gun";
-        //String expected = "guns";     // failed test
+        //Item item = new Item("knife","this is a knife", 100);
+        String expected = "knife";
+        //String expected = "knives";     // failed test
         String actual = item.getName();
         
         assertEquals(expected, actual);
     }
-
-    
-
     /**
      * Test of getPower method, of class Item.
      */
     @Test
     public void testGetPower() {
-        //Item item = new Item("gun","this is a gun", 0);
-        int expected = 0;
+        //Item item = new Item("knife","this is a knife", 100);
+        int expected = 100;
         int actual = item.getPower();
         
         assertEquals(expected, actual);

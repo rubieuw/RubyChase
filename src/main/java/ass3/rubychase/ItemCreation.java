@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * There are 5 items which means 1 item in each room.
  *
  * @author Rubie Nunnoo
- * @version 1.0
+ * @version 2.0
  */
 public class ItemCreation
 {
@@ -28,7 +28,7 @@ public class ItemCreation
         
         Item ruby, sword, key, lever, ogre;
         
-        ruby = new Item("ruby", "The ruby, also known as the queen of gems", 1001);
+        ruby = new Item("ruby", "The ruby, also known as the queen of gems,", 1001);
         sword = new Item("sword", "The legendary Excalibur sword", 1000);
         key = new Item("key", "The heart shape key", 1);
         lever = new Item("lever", "The gate lock mechanism",1);

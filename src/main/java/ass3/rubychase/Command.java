@@ -1,3 +1,5 @@
+package ass3.rubychase;
+
 /**
  * This class is part of the "Ruby Chase" game. 
  * "Ruby Chase" is a very simple, text based adventure and thriller game.  
@@ -5,10 +7,8 @@
  * This class has some information about commands issued by the player.
  
  * @author  Rubie Nunnoo
- * @version 1.0
+ * @version 2.0
  */
-
-package ass3.rubychase;
 
 public class Command
 {

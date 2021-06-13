@@ -7,7 +7,7 @@ package ass3.rubychase;
  * "Ruby Chase" is a very simple, text based adventure and thriller game.
  *
  * @author Rubie Nunnoo
- * @version 1.0
+ * @version 2.0
  */
 
 

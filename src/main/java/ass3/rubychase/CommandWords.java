@@ -1,3 +1,5 @@
+package ass3.rubychase;
+
 /**
  * This class is part of the "Ruby Chase" game. 
  * "Ruby Chase" is a very simple, text based adventure and thriller game.  .
@@ -5,16 +7,15 @@
  * This class features to command words used in the game.
  * 
  * @author  Rubie Nunnoo
- * @version 1.0
+ * @version 2.0
  */
-package ass3.rubychase;
 
 public class CommandWords
     {
     // a constant array that holds all valid command words
     private static final String[] validCommands = 
     {
-        "go", "quit", "help", "take", "drop", "use", "inventory", "pull" //"inspect"
+        "go", "quit", "help", "take", "drop", "use", "inventory", "pull"
     };
 
     /**
@@ -27,7 +28,7 @@ public class CommandWords
 
     /**
      * Check whether a given String is a valid command word. 
-     * @return true if it is, false if it isn't.
+     * @return true if it is, if it isn't false
      */
     public boolean isCommand(String aString)
     {

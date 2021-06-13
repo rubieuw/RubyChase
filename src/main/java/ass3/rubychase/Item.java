@@ -6,21 +6,26 @@ package ass3.rubychase;
  * 
  *
  * @author Rubie Nunnoo
- * @version 1.0
+ * @version 2.0
  */
 public class Item
 {
     private final String name;
     private final String description;
   
-    private int destructivePower;
+    private final int destructivePower;
     //private double healingPower;
     
+    /**
+     * Creation of items, (attributing names, descriptions and power).
+     * @param name name of item
+     * @param description description of item
+     * @param destructivePower level of item destructive power
+     */
     public Item(String name, String description, int destructivePower)
     {
         this.name = name;
         this.description = description;
-        
         this.destructivePower = destructivePower;
     }
 
@@ -32,17 +37,26 @@ public class Item
        // this.healingPower = healingPower;
     //}
     
-    //write accessors and mutators
+    /**
+     * Given a command, process the command.
+     * @return the name of the current item.
+     */
     public String getName(){
         return name;
     }
     
+    /**
+     * Given a command, process the command.
+     * @return the current item description.
+     */
     public String getDescription(){
         return description;
     }
     
-    //@return
-    
+    /**
+     * Given a command, process the command.
+     * @return the destructive power of the current item.
+     */
     public int getPower(){
     return destructivePower;
     }

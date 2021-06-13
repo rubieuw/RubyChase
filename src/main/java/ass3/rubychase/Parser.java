@@ -9,7 +9,7 @@ import java.util.Scanner;
  * This parser identifies the player's input as an "Adventure" command. 
  * 
  * @author  Rubie Nunnoo
- * @version 1.0
+ * @version 2.0
  */
 public class Parser 
 {
